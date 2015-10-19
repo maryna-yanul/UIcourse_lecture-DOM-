@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DOM</title>
+</head>
+<body>
+<script>
+
+function getAllDivs(type, children, collected){
+var allBodyTags = collected||[];
+  var elmBody = document.querySelector("BODY");
+  if(children){
+    elmBody = children;
+  }
+
+for (var i = 0; i < elmBody.childNodes.length; i++){
+    if (elmBody.childNodes[i].nodeType == 1){
+    if(elmBody.childNodes[i].nodeName == type){allBodyTags.push(elmBody.childNodes[i]);console.log(allBodyTags);}
+     if(elmBody.childNodes[i].childNodes.length > 0){
+       getAllDivs(type, elmBody.childNodes[i], allBodyTags);      
+     }else { 
+      return allBodyTags; 
+    }
+    }
+}
+}
+</script>
+</body>
+</html>
+
